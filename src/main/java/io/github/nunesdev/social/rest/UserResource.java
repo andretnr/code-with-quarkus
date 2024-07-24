@@ -43,7 +43,6 @@ public class UserResource {
         userRepository.persist(user);
         String userJson = objectMapper.writeValueAsString(user);
         redisClient.set(Arrays.asList(user.getId().toString(), userJson));
-       // redisClient.set(Arrays.asList(user.getId().toString(), user.toString()));
         return Response.ok(user).build();
     }
 
